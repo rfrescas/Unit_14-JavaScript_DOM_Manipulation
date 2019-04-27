@@ -18,10 +18,10 @@ filterTable.on("click", function () {
 
     // Select the input(s) from user
     const enterDate = d3.select("#datetime").property("value");
-    const enterCity = d3.select("#city").property("value");
-    const enterState = d3.select("#state").property("value");
-    const enterCountry = d3.select("#country").property("value");
-    const enterShape = d3.select("#shape").property("value");
+    const enterCity = d3.select("#city").property("value").toLowerCase();
+    const enterState = d3.select("#state").property("value").toLowerCase();
+    const enterCountry = d3.select("#country").property("value").toLowerCase();
+    const enterShape = d3.select("#shape").property("value").toLowerCase();
 
 
     // Use the input to filter the selection
