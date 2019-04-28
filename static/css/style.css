@@ -29,7 +29,7 @@ body {
 }
 
 /* The code styles the text at the bottom of the footer */
-.footer > .bottom {
+.footer>.bottom {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -102,6 +102,7 @@ select {
   background-attachment: fixed;
   background-position: bottom center;
   background-size: cover;
+  color: #9F792C;
 }
 
 .hero h1 {
