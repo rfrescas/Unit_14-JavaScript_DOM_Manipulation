@@ -1,5 +1,5 @@
 // from data.js
-const tableData = data;
+let tableData = data;
 
 // grab element to filter the table
 const filterTable = d3.select("#filter-btn");
@@ -38,60 +38,33 @@ filterTable.on("click", function () {
     const enterCountry = d3.select("#country").property("value").toLowerCase();
     const enterShape = d3.select("#shape").property("value").toLowerCase();
 
-    // Use the input to filter the selection
-    const byDate = tableData.filter(data => {
-        return data.datetime === enterDate
-    })
+    // Create a new variable that will filter original data from search 
+    const filteredData = data.filter(function (sighting) {
+        const searchDate = sighting.datetime;
+        const searchCity = sighting.city;
+        const searchState = sighting.state;
+        const searchCountry = sighting.country;
+        const searchShape = sighting.shape;
 
-    const byCity = tableData.filter(city => {
-        return city.city === enterCity
-    })
-
-    const byState = tableData.filter(state => {
-        return state.state === enterState
-    })
-
-    const byCountry = tableData.filter(country => {
-        return country.country === enterCountry
-    })
-
-    const byShape = tableData.filter(shape => {
-        return shape.shape === enterShape
-    })
+        // If statements to pull filtered criteria using search criteria
+        if (
+            (searchDate === enterDate || enterDate === "") &&
+            (searchCity === enterCity || enterCity === "") &&
+            (searchState === enterState || enterState === "") &&
+            (searchCountry === enterCountry || enterCountry === "") &&
+            (searchShape === enterShape || enterShape === "")
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    });
 
     // Loop through the filtered data and put on webpage
-    byDate.forEach(data => {
+    filteredData.forEach(data => {
         const row = tbody.append("tr");
         for (const key in data) {
             row.append("td").text(data[key]);
-        }
-    })
-
-    byCity.forEach(city => {
-        const row = tbody.append("tr");
-        for (const key in city) {
-            row.append("td").text(city[key]);
-        }
-    })
-
-    byState.forEach(state => {
-        const row = tbody.append("tr");
-        for (const key in state) {
-            row.append("td").text(state[key]);
-        }
-    })
-
-    byCountry.forEach(country => {
-        const row = tbody.append("tr");
-        for (const key in country) {
-            row.append("td").text(country[key]);
-        }
-    })
-
-    byShape.forEach(shape => {
-        const row = tbody.append("tr");
-        for (const key in shape) {
-            row.append("td").text(shape[key]);
         }
     })
 })
