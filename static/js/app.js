@@ -11,7 +11,6 @@ const resetTable = d3.select("#reset-btn")
 const tbody = d3.select("tbody");
 
 // create a function to load all data
-
 function loadData() {
     tableData.forEach(data => {
         const row = tbody.append("tr");
