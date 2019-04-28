@@ -100,8 +100,6 @@ filterTable.on("click", function () {
 // Create a function to reset the table with a button click
 resetTable.on("click", function () {
 
-    // Prevent default form refresh
-    d3.event.preventDefault();
     // clear the html tbody for any new data
     tbody.html("");
     // reload the data to show everything
